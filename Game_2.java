@@ -2,12 +2,12 @@ import java.util.Scanner;
 import java.util.Hashtable;
 import java.util.Random;
 
-class Cat{
+class Cat {
 	public boolean SearchMouse(Mouse m,int x, int y){
 		return (m.board[x][y] == 1) ? true : false;
 	}
 }
-class Mouse{
+class Mouse {
 	int[][] board = {
 			  { 0 ,0, 0, 0, 0 },
 			  { 0 ,0, 0, 0, 0 },
@@ -18,12 +18,10 @@ class Mouse{
 	
 	Mouse(int x, int y){
 		this.board[x][y] = 1;
-//		this.board[3][3] = 1;
 	}
 }
 
 public class Game_2 {
-	
 	public static void main(String args[]) {
 		Scanner reader = new Scanner(System.in);
 		String option = "0";
@@ -33,7 +31,7 @@ public class Game_2 {
 	    do {
 	    	System.out.print("Do you want to play Yes(1) or No(0): ");
 	    	option = (reader.next());
-    		
+
 		    switch(option) {
 				case "1":
 					System.out.println("Lets play");
@@ -66,10 +64,8 @@ public class Game_2 {
 							else {
 								System.out.println("Invalid format, format expected: digit,digit");
 							}
-							
 						}
 					} while (!correct && times < 5);
-					
 					
 					if (!correct && times == 5) {
 						failures++;
@@ -77,7 +73,6 @@ public class Game_2 {
 					
 					System.out.println("Success: " + successes);
 					System.out.println("Failures: " + failures);
-					
 					break;
 				case "0":
 					System.out.println("Good bye");
