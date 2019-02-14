@@ -40,7 +40,7 @@ public class Game_2 {
 					Cat 		cat = new Cat();
 					boolean 	correct = false;
 					int 		times = 0;
-					Hashtable 	hash = new Hashtable(); 
+					Hashtable<String, Boolean> 	hash = new Hashtable<String, Boolean>(); 
 					
 					do{
 						String coord = "";
