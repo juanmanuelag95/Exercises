@@ -80,7 +80,7 @@ public class Game_2 {
 					System.out.println("Failures: " + failures);
 					break;
 				default:
-					System.out.println("Use valid option");
+					System.out.println("Use valid optionS");
 		    }
 		 
 		} while (!option.contentEquals("0"));
