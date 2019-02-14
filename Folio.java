@@ -14,6 +14,8 @@ public abstract class Folio {
 		this.folio = "";
 	}
 	
+	// function for generate parts of the folio
+	// including the rules
 	public void GenerateFolioParts(int n) {
 		Random rand = new Random();	
 		int oldDigit = 0;
@@ -27,6 +29,7 @@ public abstract class Folio {
 		}
 	}
 	
+	// write on the temp file, only correct folios
 	public void writeFolio() {
         // The name of the file to open.
         String fileName = "temp.txt";

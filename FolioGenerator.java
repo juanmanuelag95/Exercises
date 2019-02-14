@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Scanner;
 
+// class for old type of folio
 class FolioOld extends Folio{
 
 	@Override
@@ -20,11 +21,11 @@ class FolioOld extends Folio{
 	
 }
 
+//class for new type of folio
 class FolioNew extends Folio{
 
 	@Override
 	public void Generate() {
-//		System.out.println("Generate New");
 		if (this.folio.length() != 3) {
 			this.folio = "";
 		}
@@ -38,6 +39,8 @@ class FolioNew extends Folio{
 }
 
 public class FolioGenerator {
+	
+	//function for read and store all folios on the temp file
 	public static void readFolios(Hashtable<String, Integer> h) {
 		// The name of the file to open.
         String fileName = "temp.txt";
@@ -55,7 +58,6 @@ public class FolioGenerator {
                 new BufferedReader(fileReader);
 
             while((line = bufferedReader.readLine()) != null) {
-//                System.out.println(line);
                 h.put(line, 1);
             }   
             
@@ -66,7 +68,6 @@ public class FolioGenerator {
             System.out.println(
                 "Unable to open file '" + 
                 fileName + "'");    
-//            ex.printStackTrace();
         }
         catch(IOException ex) {
             System.out.println(
@@ -84,21 +85,22 @@ public class FolioGenerator {
 		System.out.println("Which version Old(1) or New(2)?");
 		Hashtable<String, Integer> hash = new Hashtable<String, Integer>();
 		int option = reader.nextInt();
-//		reader.close();
 		boolean status = false;
 		String ISO = "";
 		ArrayList<String> statesISOFormat = new ArrayList<String>();
+		// list of available ISO
 		statesISOFormat.addAll(Arrays.asList("AGU","BCN","BCS","CAM","CHP","CHH","CMX",
 											 "COA","COL","DUR","GUA","GRO","HID","JAL",
 											 "MEX","MIC","MOR","NAY","NLE","OAX","PUE",
 											 "QUE","ROO","SLP","SIN","SON","TAB","TAM",
 											 "TLA","VER","YUC","ZAC"));
-//		System.out.print(statesISOFormat);
+		// read all folios from the existing file
 		readFolios(hash);
-		
 		switch(option) {
 			case 1:
 				FolioOld oFolio = new FolioOld();
+				// check if folio all ready exist if don't
+				// write on the temp file
 				do {
 					oFolio.Generate();
 					status = hash.containsKey(oFolio.folio);
@@ -108,8 +110,12 @@ public class FolioGenerator {
 				break;
 			case 2:
 				FolioNew nFolio = new FolioNew();
+				// check if folio all ready exist if don't
+				// write on the temp file
 				do {
 					do {
+						// check if the given ISO is on the list 
+						// and ask for a correct one
 						System.out.println("Give your State ISO: ");
 						ISO = (reader.next()); 
 						if(!statesISOFormat.contains(ISO)) {
