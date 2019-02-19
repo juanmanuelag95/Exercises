@@ -31,6 +31,12 @@ public class Exercise_Twelve {
 		driver.findElement(By.name("confirmPassword")).sendKeys("password1");
 		driver.findElement(By.name("register")).click();
 		
+		// User Validation
+		if (driver.getCurrentUrl().equals("http://newtours.demoaut.com/create_account_success.php"))
+			System.out.println("Register correct");
+		else
+			System.out.println("Register incorrect" + driver.getCurrentUrl());
+		
 		Thread.sleep(5000);
 		driver.close();
 	}
